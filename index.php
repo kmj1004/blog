@@ -9,7 +9,10 @@
   while($row = mysqli_fetch_array($result)){
        $list .= "<a href=\"update.php?title={$row['title']}\">{$row['title']}</a><br>";
   }
-?>
+
+
+
+  ?>
 
 <!DOCTYPE html>
 <html>
@@ -27,8 +30,16 @@
     <form action = "create.php" method="post">
       <p><input type="submit" name="create" value="글쓰기"></p>
     </form>
+
     <form action="search.php" method="post">
-      <p><input type="text" name="search">  <input type="submit" name="search" value="검색"></p>
+      <select name="select">
+        <!--<option value="name">작성자</option> -->
+        <option value="title">제목</option>
+        <option value="contents">내용</option>
+      </select>
+      <input type="hidden" value="<?php $_POST['search']?>">
+      <input type="text" name="search">
+      <input type="submit" value="검색">
     </form>
   </body>
 </html>
