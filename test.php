@@ -1,7 +1,3 @@
 <?php
-  if($select == title && $search != '') {
-  $where = "WHERE {$row['title']} like '$%search%'";
-  } elseif($select == contents && $search != '') {
-    $where = "WHERE {$row['contents']} like '$%search%'";
-  }
+  echo "<script>alert('이름을 입력해 주세요.');</script>"
 ?>

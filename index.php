@@ -32,10 +32,10 @@
     </form>
 
     <form action="search.php" method="post">
-      <select name="select">
+      <select name="select[]">
         <!--<option value="name">작성자</option> -->
-        <option value="title">제목</option>
-        <option value="contents">내용</option>
+        <option value="select_title">제목</option>
+        <option value="select_contents">내용</option>
       </select>
       <input type="hidden" value="<?php $_POST['search']?>">
       <input type="text" name="search">
