@@ -5,17 +5,19 @@
   </head>
   <body>
     <form action="process_join.php" method="post">
-      <fieldsest>
+      <fieldset>
       아이디:<br>
-      <p><input type="text" name="id"></p>
+      <p><input type="text" name="user_id"></p>
       비밀번호:<br>
-      <p><input type="text" name="password"></p>
+      <p><input type="password" name="password"></p>
       비밀번호 확인:<br>
-      <p><input type="text" name="pwconfirm"></p>
+      <p><input type="password" name="pwconfirm"></p>
+      이름:<br>
+      <p><input type="text" name="user_name"></p>
+      생년월일:<br>
+      <p><input type="date" name="birth[]" min="1940-01-01"></p>
       이메일:<br>
       <p><input type="text" name="email"></p>
-      이름:<br>
-      <p><input type="text" name="user"></p>
       성별<br>
         <p><input type="radio" name="gender" value="여자">여자
         <input type="radio" name="gender" value="남자">남자</p>
