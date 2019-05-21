@@ -16,11 +16,11 @@
       <p><input type="text" name="user_name"></p>
       생년월일:<br>
       <p><input type="date" name="birth[]" min="1940-01-01"></p>
-      이메일:<br>
-      <p><input type="text" name="email"></p>
       성별<br>
         <p><input type="radio" name="gender" value="여자">여자
         <input type="radio" name="gender" value="남자">남자</p>
+      이메일:<br>
+      <p><input type="text" name="email"></p>
       <input type="submit" value="가입">
     </form>
 

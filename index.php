@@ -39,7 +39,7 @@
       </select>
       <input type="hidden" value="<?php $_POST['search']?>">
       <input type="text" name="search">
-      <input type="submit" value="검색">
+      <input type="submit" value="검색" columns="5">
     </form>
   </body>
 </html>
