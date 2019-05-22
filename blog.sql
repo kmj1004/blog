@@ -23,12 +23,12 @@ DROP TABLE IF EXISTS `board`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `board` (
+  `id` int(100) NOT NULL,
   `title` varchar(100) NOT NULL,
   `contents` text,
   `created` datetime NOT NULL,
-  `num` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`num`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,8 +37,36 @@ CREATE TABLE `board` (
 
 LOCK TABLES `board` WRITE;
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
-INSERT INTO `board` VALUES ('test','test','2019-05-14 13:51:59',1),('test2','test2','2019-05-14 14:00:48',2),('php','php is','2019-05-15 16:21:17',5);
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `member`
+--
+
+DROP TABLE IF EXISTS `member`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `member` (
+  `id` int(100) NOT NULL,
+  `user_id` varchar(15) NOT NULL,
+  `password` varchar(200) DEFAULT NULL,
+  `user_name` varchar(30) NOT NULL,
+  `birth` varchar(50) DEFAULT NULL,
+  `gender` varchar(10) NOT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `member`
+--
+
+LOCK TABLES `member` WRITE;
+/*!40000 ALTER TABLE `member` DISABLE KEYS */;
+INSERT INTO `member` VALUES (5,'test1','$2y$10$XAyam65KlJiLVaMwFN5xoestAKNqT.gZgdaqexpKkQ6v.hOQZLhHe','테스트','','여자','test1@example.com');
+/*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-16 14:41:17
+-- Dump completed on 2019-05-22 18:00:37

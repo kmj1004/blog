@@ -7,13 +7,20 @@
   $user_id = $_POST['user_id'];
   $password = $_POST['password'];
   $user_name = $_POST['user_name'];
-  $birth= implode($_POST['birth']);
   $email = $_POST['email'];
+  $birth = implode($_POST['birth']);
   $gender = $_POST['gender'];
 
+  include "dbconnect.php";
+  $sql = "SELECT user_id FROM member";
+  $result = mysqli_query($conn, $sql);
+  $row= mysqli_fetch_array($result);
 
   if(empty($user_id)) {
     echo "<script>alert('아이디를 입력해 주세요.');</script>";
+    exit();
+  } elseif($user_id == $row['user_id']) {
+    echo "<script>alert('이미 사용중인 아이디입니다.')</script>";
     exit();
   } elseif (!preg_match("/^[a-zA-Z0-9]{5,15}$/", $user_id)) {
     echo "<script>alert('아이디는 5~15자의 영문대소문자, 숫자만 사용 가능합니다.');</script>";
@@ -43,38 +50,38 @@ if(empty($password) || (strlen($password) > 15)) {
       echo "<script>alert('생년월일을 선택해 주세요.')</script>";
     }
 
-   if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-       echo "<script>alert('이메일 주소를 확인해 주세요.')</script>";
-       exit();
-     }
-   /*  if (!preg_match("/^[a-zA-Z0-9]+@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z])+$/", $email)){
-       echo "<script>alert('이메일 주소를 다시 확인해 주세요.')</script>";*/
-       //filter_var($email, FILTER_VALIDATE_EMAIL)
-
-
    if(empty($gender)) {
      echo "<script>alert('성별을 선택해 주세요.')</script>";
      exit();
    }
 
+   if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+       echo "<script>alert('이메일 주소를 확인해 주세요.')</script>";
+       exit();
+     }
 
-      include "dbconnect.php";
-        $sql = "INSERT INTO member(user_id, password, user_name, birth, gender, email)
-               VALUES(
-                 '$user_id', '$password', '$user_name',
-                 $birth, '$gender', '$email'
-               )";
+      $sql = "INSERT INTO member(user_id, password, user_name, birth, gender, email)
+             VALUES(
+               '$user_id', '$password', '$user_name',
+               '$birth', '$gender', '$email'
+             )";
 
-         $result = mysqli_query($conn, $sql);
+       $result = mysqli_query($conn, $sql);
+       var_dump($sql);
 
-        if ($result == false) {
-          echo '<p>문제가 생겼습니다. 관리자에게 문의해주세요</p>';
-          echo '<a href="join.php">돌아가기</a>';
-          var_dump(mysqli_error($conn));
-          //error_log(mysqli_error($conn));
+       if ($result == false) {
+        echo '<p>문제가 생겼습니다. 관리자에게 문의해주세요</p>';
+        echo '<a href="join.php">돌아가기</a>';
+        var_dump(mysqli_error($conn));
+        //error_log(mysqli_error($conn));
         } else {
-          header("Location: join.php");
+          echo "<script>alert('회원가입 성공!')</script>";
+          header("Location: login.php");
         }
+
+
+
+
 
 ?>
 

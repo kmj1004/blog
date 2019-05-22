@@ -1,10 +1,10 @@
 <?php
   $sname = "localhost";
-  $id = "root";
-  $pw = "admin12345";
+  $ID = "root";
+  $PW = "admin12345";
   $dbname = "blog";
 
-  $conn = mysqli_connect($sname, $id, $pw, $dbname);
+  $conn = mysqli_connect($sname, $ID, $PW, $dbname);
 
 
  ?>

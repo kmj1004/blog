@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>민지님의 블로그</title>
+    <title><?php $row['name'] ?>님의 블로그</title>
     <!--name으로 대체할 예정-->
   </head>
   <body>
-    <h1>민지님의 블로그</h1>
+    <h1><?php $row['name'] ?>님의 블로그</h1>
     <!--name으로 대체할 예정-->
 
     <form action = "process_create.php" method="post">

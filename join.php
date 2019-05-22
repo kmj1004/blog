@@ -2,6 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <style>
+      form { display:inline; }
+    </style>
   </head>
   <body>
     <form action="process_join.php" method="post">
@@ -15,7 +18,7 @@
       이름:<br>
       <p><input type="text" name="user_name"></p>
       생년월일:<br>
-      <p><input type="date" name="birth[]" min="1940-01-01"></p>
+      <p><input type="date" name="birth" min="1940-01-01"></p>
       성별<br>
         <p><input type="radio" name="gender" value="여자">여자
         <input type="radio" name="gender" value="남자">남자</p>
@@ -25,7 +28,7 @@
     </form>
 
     <form action="index.php" method="post">
-      <p><input type="submit" value="돌아가기"></p>
+      <input type="submit" value="돌아가기">
     </form>
     </fieldset>
   </body>

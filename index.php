@@ -1,16 +1,20 @@
 
 <?php
   include "dbconnect.php";
-  $sql = "SELECT * FROM board";
+  $sql = "SELECT * FROM member LEFT JOIN board
+          ON member.id = board.id";
   $result = mysqli_query($conn, $sql);
-
+  var_dump($id);
+  var_dump($_POST['$id']);
 
   $list = '';
   while($row = mysqli_fetch_array($result)){
+    if($row['user_id'] == $_POST['$id']) {
        $list .= "<a href=\"update.php?title={$row['title']}\">{$row['title']}</a><br>";
+
+    }
   }
-
-
+var_dump($row['name']);
 
   ?>
 
@@ -18,11 +22,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>민지님의 블로그</title>
+    <title><?$row['name'] ?>님의 블로그</title>
         <!--name으로 대체할 예정-->
   </head>
   <body>
-    <h1>민지님의 블로그</h1>
+    <h1><?$row['name'] ?>의 블로그</h1>
     <!--name으로 대체할 예정-->
 
       <?=$list?>
