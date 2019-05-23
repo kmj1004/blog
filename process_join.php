@@ -8,8 +8,9 @@
   $password = $_POST['password'];
   $user_name = $_POST['user_name'];
   $email = $_POST['email'];
-  $birth = implode($_POST['birth']);
+  $birth = $_POST['birth'];
   $gender = $_POST['gender'];
+
 
   include "dbconnect.php";
   $sql = "SELECT user_id FROM member";
@@ -38,46 +39,47 @@ if(empty($password) || (strlen($password) > 15)) {
        $password = password_hash($password, PASSWORD_DEFAULT);
      }
 
-     if(empty($user_name)) {
-       echo "<script>alert('이름을 입력해 주세요.');</script>";
-       exit();
-     } elseif (!preg_match("/^[가-힣a-zA-Z0-9]{1,15}$/",$user_name)) {
-       echo "<script>alert('이름은 1~15자의 한글, 영문대소문자만 사용 가능합니다.');</script>";
-       exit();
-     }
-
-    if (empty($birth)) {
-      echo "<script>alert('생년월일을 선택해 주세요.')</script>";
-    }
-
-   if(empty($gender)) {
-     echo "<script>alert('성별을 선택해 주세요.')</script>";
+   if(empty($user_name)) {
+     echo "<script>alert('이름을 입력해 주세요.');</script>";
+     exit();
+   } elseif (!preg_match("/^[가-힣a-zA-Z0-9]{1,15}$/",$user_name)) {
+     echo "<script>alert('이름은 1~15자의 한글, 영문대소문자만 사용 가능합니다.');</script>";
      exit();
    }
 
-   if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-       echo "<script>alert('이메일 주소를 확인해 주세요.')</script>";
-       exit();
-     }
+  if (empty($birth)) {
+    echo "<script>alert('생년월일을 선택해 주세요.')</script>";
+    exit();
+  }
 
-      $sql = "INSERT INTO member(user_id, password, user_name, birth, gender, email)
-             VALUES(
-               '$user_id', '$password', '$user_name',
-               '$birth', '$gender', '$email'
-             )";
+ if(empty($gender)) {
+   echo "<script>alert('성별을 선택해 주세요.')</script>";
+   exit();
+ }
 
-       $result = mysqli_query($conn, $sql);
-       var_dump($sql);
+ if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+     echo "<script>alert('이메일 주소를 확인해 주세요.')</script>";
+     exit();
+   }
 
-       if ($result == false) {
-        echo '<p>문제가 생겼습니다. 관리자에게 문의해주세요</p>';
-        echo '<a href="join.php">돌아가기</a>';
-        var_dump(mysqli_error($conn));
-        //error_log(mysqli_error($conn));
-        } else {
-          echo "<script>alert('회원가입 성공!')</script>";
-          header("Location: login.php");
-        }
+  $sql = "INSERT INTO member(user_id, password, user_name, birth, gender, email)
+          VALUES(
+            '$user_id', '$password', '$user_name',
+            '$birth', '$gender', '$email'
+          )";
+
+  $result = mysqli_query($conn, $sql);
+
+  if ($result == false) {
+   echo '<p>문제가 생겼습니다. 관리자에게 문의해주세요</p>';
+   echo '<a href="join.php">돌아가기</a>';
+   //var_dump(mysqli_error($conn));
+   error_log(mysqli_error($conn));
+   } else {
+     echo "<script>alert('회원가입 성공!')</script>";
+     header("Location: index.php");
+   }
+
 
 
 

@@ -1,49 +1,26 @@
-
-<?php
-  include "dbconnect.php";
-  $sql = "SELECT * FROM member LEFT JOIN board
-          ON member.id = board.id";
-  $result = mysqli_query($conn, $sql);
-  var_dump($id);
-  var_dump($_POST['$id']);
-
-  $list = '';
-  while($row = mysqli_fetch_array($result)){
-    if($row['user_id'] == $_POST['$id']) {
-       $list .= "<a href=\"update.php?title={$row['title']}\">{$row['title']}</a><br>";
-
-    }
-  }
-var_dump($row['name']);
-
-  ?>
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title><?$row['name'] ?>님의 블로그</title>
-        <!--name으로 대체할 예정-->
+    <title>블로그</title>
+    <style>
+      form { display:inline; }
+      a { text-decoration: none; }
+    </style>
   </head>
-  <body>
-    <h1><?$row['name'] ?>의 블로그</h1>
-    <!--name으로 대체할 예정-->
+    <body>
+      <h1>환영합니다.</h1>
+      <form action="login_check.php" method="post">
+        아이디:<br>
+        <p><input type="text" name="login_id"></p>
+        비밀번호:<br>
+        <p><input type="password" name="login_pw"></p>
+        <input type="submit" value="로그인">
+      </form>
+      <form action="join.php" method="post">
+        <input type="submit" value="회원가입">
+      </form>
+      <p><a href="">아이디</a>.<a href="">비밀번호 찾기</a></p>
+    </body>
 
-      <?=$list?>
-
-    <form action = "create.php" method="post">
-      <p><input type="submit" name="create" value="글쓰기"></p>
-    </form>
-
-    <form action="search.php" method="post">
-      <select name="select[]">
-        <!--<option value="name">작성자</option> -->
-        <option value="select_title">제목</option>
-        <option value="select_contents">내용</option>
-      </select>
-      <input type="hidden" value="<?php $_POST['search']?>">
-      <input type="text" name="search">
-      <input type="submit" value="검색" columns="5">
-    </form>
-  </body>
 </html>

@@ -1,5 +1,6 @@
 <html>
 
+
   <?php
     include "dbconnect.php";
 
@@ -11,20 +12,17 @@
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
 
+    if(!isset($row['user_id']) || !password_verify($pw, $row['password'])) {
+      echo "<script>alert('아이디 또는 비밀번호가 틀립니다.');</script>";
+    } else {
+      session_start();
+      $_SESSION['user_id'] = $id;
 
-    if (password_verify($pw, $row['password']) == false) {
-      echo "<script>alert('아이디 또는 비밀번호가 틀립니다.')</script>";
-      header("Location: login.php");
+  //    $_SESSION['user_name'] = $row['user_name'];
+      header("Location: main.php");
     }
-
-
    ?>
 
-   <form action="index.php" method="post">
-     <input type="hidden" value="<?php $id ?>">
-   </form>
-    <?php header("Location: index.php"); ?>
-   <!--  <a href="login.php">돌아가기</a> -->
-
+   <meta http-equiv='refresh' content='0; url=index.php'>
 
 </html>
