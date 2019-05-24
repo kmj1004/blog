@@ -2,7 +2,9 @@
 <?php
   session_start();
   $user_id = $_SESSION['user_id'];
-  var_dump($member_id);
+  $user_name = $_SESSION['user_name'];
+
+
 ?>
 
 <html>
@@ -11,10 +13,10 @@
     <style>
       form { display:inline; }
     </style>
-    <title><?= $user_id ?>님의 블로그</title>
+    <title><?= $user_name ?>님의 블로그</title>
   </head>
   <body>
-    <h1><?= $user_id ?>님의 블로그</h1>
+    <h1><?= $user_name ?>님의 블로그</h1>
 
     <form action = "process_create.php" method="post">
       <p>제목 <input type="text" name="title"></p>

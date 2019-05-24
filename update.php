@@ -29,7 +29,7 @@
         <input type ="hidden" name="num" value="<?=$row['num']?>">
         <br><input type="submit" value="삭제"></br>
       </form>
-      <form action="index.php" method="post">
+      <form action="main.php" method="post">
         <br><input type="submit" value="돌아가기"></br>
       </form>
 

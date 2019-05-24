@@ -1,4 +1,6 @@
 <?php
+  sesseion_start();
+  $user_id = $_SESSION['user_id'];
   include "dbconnect.php";
   $select = $_POST['select'];
   $search = $_POST['search'];
@@ -6,7 +8,8 @@
   if(!($search == '')) {
     if($select[0] == "select_title") {
       $sql = "SELECT * FROM board
-              WHERE title LIKE '%$search%'";
+              WHERE idtitle LIKE '%$search%'";
+              /*user_id == 'test1' and*/
     } elseif($select[0] == "select_contents") {
       $sql = "SELECT * FROM board
               WHERE contents LIKE '%$search%'";

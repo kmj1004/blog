@@ -17,6 +17,7 @@
     } else {
       session_start();
       $_SESSION['user_id'] = $id;
+      $_SESSION['password'] = $pw;
 
   //    $_SESSION['user_name'] = $row['user_name'];
       header("Location: main.php");
