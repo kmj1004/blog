@@ -21,7 +21,7 @@
     echo "<script>alert('아이디를 입력해 주세요.');</script>";
     exit();
   } elseif($user_id == $row['user_id']) {
-    echo "<script>alert('이미 사용중인 아이디입니다.')</script>";
+    echo "<script>alert('이미 사용중인 아이디입니다.');</script>";
     exit();
   } elseif (!preg_match("/^[a-zA-Z0-9]{5,15}$/", $user_id)) {
     echo "<script>alert('아이디는 5~15자의 영문대소문자, 숫자만 사용 가능합니다.');</script>";
@@ -57,7 +57,7 @@ if(empty($password) || (strlen($password) > 15)) {
    exit();
  }
 
- if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+ if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
      echo "<script>alert('이메일 주소를 확인해 주세요.')</script>";
      exit();
    }
@@ -73,18 +73,11 @@ if(empty($password) || (strlen($password) > 15)) {
   if ($result == false) {
    echo '<p>문제가 생겼습니다. 관리자에게 문의해주세요</p>';
    echo '<a href="join.php">돌아가기</a>';
-   //var_dump(mysqli_error($conn));
-   error_log(mysqli_error($conn));
+   var_dump(mysqli_error($conn));
+   //error_log(mysqli_error($conn));
    } else {
-     echo "<script>alert('회원가입 성공!')</script>";
+     echo "<script>alert('회원가입 성공!');</script>";
      header("Location: index.php");
    }
-
-
-
-
-
-
 ?>
-
 </html>

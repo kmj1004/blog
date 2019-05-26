@@ -1,7 +1,7 @@
 
 <?php
-session_start();
-$user_id = $_SESSION['user_id'];
+  session_start();
+  $user_id = $_SESSION['user_id'];
 
   include "dbconnect.php";
   $sql = "SELECT * FROM member LEFT JOIN board
@@ -13,6 +13,7 @@ $user_id = $_SESSION['user_id'];
     $list .= "<a href=\"update.php?title={$row['title']}\">{$row['title']}</a><br>";
     $_SESSION['user_name'] = $row['user_name'];
     $_SESSION['id'] = $row['id'];
+    $_SESSION['mem_id'] = $row['mem_id'];
   }
 ?>
 
@@ -31,14 +32,14 @@ $user_id = $_SESSION['user_id'];
       <?=$list?><br>
 
     <form action="search.php" method="post">
-      <select name="select[]">
+      <select name="select">
         <!--<option value="name">작성자</option> -->
         <p><option value="select_title">제목</option></p>
         <option value="select_contents">내용</option>
       </select>
       <input type="hidden" value="<?php $_POST['search']?>">
       <input type="text" name="search">
-      <input type="submit" value="검색">
+      <input type="submit" value="검색"><br><br>
       <br>
     </form>
 
@@ -50,6 +51,10 @@ $user_id = $_SESSION['user_id'];
 
       <form action="logout.php" method="post">
         <input type="submit" value="로그아웃">
+      </form>
+
+      <form action='withdrawal.php' method="post">
+        <input type="submit" value="탈퇴하기">
       </form>
   </body>
 </html>
