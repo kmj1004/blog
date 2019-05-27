@@ -1,18 +1,16 @@
 <?php
   session_start();
+  $mem_id = $_SESSION['id'];
   include "dbconnect.php";
-  $sql = "INSERT INTO board(mem_id, title, contents, created)
+  $sql = "INSERT INTO board(title, contents, created, mem_id)
     VALUES(
-      '{$_SESSION['id']}', '{$_POST['title']}', '{$_POST['contents']}', NOW())";
-
+      '{$_POST['title']}', '{$_POST['contents']}', NOW(), '$mem_id')";
   $result = mysqli_query($conn, $sql);
 
   if($result === false) {
-    echo '<p>문제가 생겼습니다. 관리자에게 문의해주세요</p>';
-    echo '<a href="main.php">돌아가기</a>';
     error_log(mysqli_error($conn));
+    echo "<script>alert('문제가 생겼습니다. 관리자에게 문의해주세요.'); history.back(); </script>";
   } else {
-    echo "<script>alret('저장되었습니다.');</script>";
-    header("Location: main.php");
+    echo "<script>alert('저장되었습니다.'); history.go(-2); </script>";
   }
  ?>

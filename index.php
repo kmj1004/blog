@@ -9,8 +9,6 @@
       form { display:inline; }
       a { text-decoration: none;
           color: gray; }
-      #bar { display: inline-grid;
-              margin-right: 1px solid gray; }
     </style>
   </head>
   <body>
@@ -24,7 +22,7 @@
       <form action="join.php" method="post">
         <input type="submit" value="회원가입">
       </form>
-      <p><div id="bar"><a href="find_id.php">아이디</a></div><a href="find_pw.php">비밀번호 찾기</a></p>
+      <p><a href="find_id.php">아이디</a>.<a href="find_pw.php">비밀번호 찾기</a></p>
     </div>
   </body>
 </html>
