@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <style>
       form { display:inline; }
-      html { text-align: center; }
+      html { text-align: center; margin-top: 100px; }
     </style>
     <title><?= $user_name ?>님의 블로그</title>
   </head>
@@ -18,8 +18,8 @@
     <h1><?= $user_name ?>님의 블로그</h1>
 
     <form action = "process_create.php" method="post">
-      <p>제목 <input type="text" style="width:'250px'" style="text-align: left" name="title"></p>
-      <p><textarea name="contents" style="width:'1000px'" placeholder="내용"></textarea></p>
+      <p><input type="text" placeholder="제목" name="title" style="width: 200px;"></p>
+      <p><textarea name="contents" placeholder="내용을 입력하세요." style="width:400px; height:200px;"></textarea></p>
       <input type="submit" value="저장">
     </form>
     <form action="main.php" method="post">

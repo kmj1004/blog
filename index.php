@@ -15,8 +15,8 @@
     <div id=center>
       <h1>환영합니다.</h1>
       <form action="login_check.php" method="post">
-        <input type="text" name="login_id" placeholder="아이디" size="15"><br><br>
-        <input type="password" name="login_pw" placeholder="비밀번호" size="15"><br><br>
+        <input type="text" name="login_id" placeholder="아이디"><br><br>
+        <input type="password" name="login_pw" placeholder="비밀번호"><br><br>
         <input type="submit" value="로그인">
       </form>
       <form action="join.php" method="post">

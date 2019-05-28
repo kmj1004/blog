@@ -17,23 +17,46 @@
             AND contents LIKE '%$search%'";
   }
   $result = mysqli_query($conn, $sql);
-  $list = '';
-  while($row = mysqli_fetch_array($result)){
-   $list .= "<a href=\"update.php?title={$row['title']}\">{$row['title']}</a><br>";
+
+   $list='';
+   while($row=mysqli_fetch_array($result)) {
+      $list .= "<tr><td><a href=\"update.php?title={$row['title']}\">{$row['title']}</a></td>
+               <td>{$row['created']}</td></tr>";
      }
 ?>
 
 <!DOCTYPE html>
 <html>
-  <body>
-    <?php
-      if(empty($list)) {
-        echo "<script>alert('검색결과가 없습니다.'); history.back();</script>";
-      } else {
-        echo $list; ?>
-        <form action="main.php" method="post">
-          <p><input type="submit" value="돌아가기"></p>
-        </form>
-      </body>
-    <?php } ?>
+  <head>
+    <meta charset="utf-8">
+    <title><?=$_SESSION['user_name'] ?>님의 블로그</title>
+    <style>
+    #center {margin-top:100px; }
+      a { text-decoration: none;}
+      table,tr,td { width:50%;
+              border-bottom: 1px solid gray;
+              border-collapse: collapse;
+              margin: auto; }
+      select { margin-top: 15px;
+                margin-bottom: 15px; }
+      html { text-align: center; }
+    </style>
+  </head>
+    <body>
+      <div id="center">
+      <?php
+        if(empty($list)) {
+          echo "<script>alert('검색결과가 없습니다.'); history.back();</script>";
+        } else { ?>
+          <table>
+            <tr>
+              <td>글제목</td>
+              <td>작성일</td>
+            </tr>
+               <?= $list; ?>
+          </table>
+          <p><button onclick="history.go(-2)">돌아가기</button></p>
+        </div>
+        </body>
+      <?php } ?>
 </html>

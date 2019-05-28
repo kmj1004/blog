@@ -19,14 +19,14 @@ $id = $_SESSION['id'];
     <meta charset="utf-8">
     <title><?= $user_id ?>의 블로그</title>
     <style>
-      form { display: inline; }
+    form { display:inline; }
+    html { text-align: center; margin-top: 100px; }
     </style>
   </head>
   <body>
     <form action = "process_update.php" method="post">
-      <p>제목 <input type="text" name="title" value="<?=$row['title']?>"></p>
-      <p>내용<br><textarea name="contents" cols="25"><?=$row['contents']?></textarea></p>
-
+      <p><input type="text" placeholder="제목" name="title" value="<?=$row['title']?>" style="width: 200px; "></p>
+      <p><textarea name="contents" placeholder="내용을 입력하세요." style="width:400px; height:200px;"><?=$row['contents']?></textarea></p>
       <input type ="hidden" name="board_id" value="<?=$row['board_id']?>">
       <input type="submit" value="수정">
     </form>
@@ -37,7 +37,5 @@ $id = $_SESSION['id'];
     <form action="main.php" method="post">
       <input type="submit" value="돌아가기">
     </form>
-
-
   </body>
 </html>

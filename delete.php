@@ -5,10 +5,9 @@
     board_id = {$_POST['board_id']}";
   $result = mysqli_query($conn, $sql);
   if($result === false) {
-  echo '<p>문제가 생겼습니다. 관리자에게 문의해주세요</p>';
-  echo '<a href="main.php">돌아가기</a>';
+  echo "<script>alert('문제가 생겼습니다. 관리자에게 문의해주세요'); history.back(); </script>";
   print_r(mysqli_error($conn));
 } else {
-  header("Location: main.php");
+  echo "<script>alert('삭제되었습니다.');history.go(-2); </script>";
 }
  ?>

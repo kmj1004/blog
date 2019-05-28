@@ -1,4 +1,3 @@
-
 <?php
   session_start();
   $user_id = $_SESSION['user_id'];
@@ -26,8 +25,7 @@
     <style>
       form {display: inline;
             text-align: right; }
-      a { text-decoration: none;
-          color: gray; }
+      a { text-decoration: none; }
       table,tr,td { width:50%;
               border-bottom: 1px solid gray;
               border-collapse: collapse;
@@ -38,34 +36,34 @@
     </style>
   </head>
   <body>
-    <h1>안녕하세요. <?= $_SESSION['user_name'] ?>님.</h1>
-    <table>
-      <tr>
-        <td>글제목</td>
-        <td>작성일</td>
-      </tr>
-        <?= $list ?>
-    </table>
-    <form action="search.php" method="post">
-      <select name="select" style="height:20px">
-        <!--<option value="name">작성자</option> -->
-        <p><option value="select_title">제목</option></p>
-        <option value="select_contents">내용</option>
-      </select>
-      <input type="hidden" value="<?php $_POST['search']?>">
-      <input type="text" name="search">
-      <input type="submit" value="검색">
-    </form>
-    <form action = "create.php" method="post">
-      <!-- margin 설정 -->
-      <input type="hidden" name="create" value="<?= $row['user_name'] ?>">
-      <input type="submit" value="글쓰기"><br>
-    </form>
-    <form action="logout.php" method="post">
-      <input type="submit" value="로그아웃">
-    </form>
-    <form action='withdrawal.php' method="post">
-      <input type="submit" value="탈퇴하기">
-    </form>
+    <div id="center">
+      <h1>안녕하세요 <?= $_SESSION['user_name'] ?>님</h1>
+      <table>
+        <tr>
+          <td>글제목</td>
+          <td>작성일</td>
+        </tr>
+          <?= $list ?>
+      </table>
+      <form action="search.php" method="post">
+        <select name="select" style="height:20px">
+          <p><option value="select_title">제목</option></p>
+          <option value="select_contents">내용</option>
+        </select>
+        <input type="hidden" value="<?php $_POST['search']?>">
+        <input type="text" name="search">
+        <input type="submit" value="검색">
+      </form>
+      <form action = "create.php" method="post">
+        <input type="hidden" name="create" value="<?= $row['user_name'] ?>">
+        <input type="submit" value="글쓰기"><br>
+      </form>
+      <form action="logout.php" method="post">
+        <input type="submit" value="로그아웃">
+      </form>
+      <form action='withdrawal.php' method="post">
+        <input type="submit" value="탈퇴하기">
+      </form>
+    </div>
   </body>
 </html>
