@@ -17,8 +17,9 @@
   <body>
     <h1><?= $user_name ?>님의 블로그</h1>
 
-    <form action = "process_create.php" method="post">
-      <p><input type="text" placeholder="제목" name="title" style="width: 200px;"></p>
+    <form action = "process_create.php" method="post" enctype="multipart/form-data">
+      <input type="text" placeholder="제목" name="title" style="width: 200px;">
+      <input type="file" name="upload" style="width:200px;">
       <p><textarea name="contents" placeholder="내용을 입력하세요." style="width:400px; height:200px;"></textarea></p>
       <input type="submit" value="저장">
     </form>
