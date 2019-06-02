@@ -10,7 +10,4 @@
   } else {
   echo "<script>alert('삭제되었습니다.'); location.href='main.php'; </script>";
   }
-
-
-
  ?>

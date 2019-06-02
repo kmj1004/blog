@@ -1,6 +1,5 @@
 <?php
   session_start();
-  //$user_id = $_SESSION['user_id'];
   $mem_id = $_SESSION['mem_id'];
   include "dbconnect.php";
   $select = $_POST['select'];
@@ -10,7 +9,6 @@
     $sql = "SELECT * FROM board
             WHERE mem_id = '$mem_id'
             AND title LIKE '%$search%'";
-            /*user_id == 'test1' and*/
   } elseif($select == "select_contents") {
     $sql = "SELECT * FROM board
             WHERE mem_id = '$mem_id'
@@ -46,7 +44,7 @@
       <div id="center">
       <?php
         if(empty($list)) {
-          echo "<script>alert('검색결과가 없습니다.'); history.back();</script>";
+          echo "<script>alert('검색결과가 없습니다.'); location.href='main.php';</script>";
         } else { ?>
           <table>
             <tr>
@@ -55,8 +53,10 @@
             </tr>
                <?= $list; ?>
           </table>
-          <p><button onclick="history.back()">돌아가기</button></p>
         </div>
+        <p><form action="main.php" method="post">
+          <input type="submit" value="돌아가기">
+        </form></p>
         </body>
       <?php } ?>
 </html>

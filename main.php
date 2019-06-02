@@ -1,12 +1,10 @@
 <?php
   session_start();
   $user_id = $_SESSION['user_id'];
-
   include "dbconnect.php";
   $sql = "SELECT * FROM member LEFT JOIN board
           ON member.id = board.mem_id WHERE user_id='$user_id'";
   $result = mysqli_query($conn, $sql);
-
   $list='';
   while($row=mysqli_fetch_array($result)) {
      $list .= "<tr><td><a href=\"update.php?title={$row['title']}\">{$row['title']}</a></td>
@@ -32,7 +30,8 @@
               margin: auto; }
       select { margin-top: 15px;
                 margin-bottom: 15px; }
-      html { text-align: center; }
+      html { text-align: center;
+              margin-top: 100px; }
     </style>
   </head>
   <body>

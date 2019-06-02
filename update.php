@@ -20,6 +20,7 @@ $user_name = $_SESSION['user_name'];
  } else {
    $file = $row['image'];
  }
+
  list($width, $height) = getimagesize($file);
 ?>
 
@@ -38,12 +39,19 @@ $user_name = $_SESSION['user_name'];
 
     <form action = "process_update.php" method="post">
       <input type="text" placeholder="제목" name="title" value="<?=$row['title']?>" style="width: 200px;">
-      <input type="file" name="upload" style="width:200px;">
-      <p><a href="<?=$file?>" download="<?=basename("$file")?>">
-      <img src="<?= $file ?>"></a>
-      <textarea name="contents" style="width:<?=$width?>px; height:<?=$height?>px;"><?=$row['contents']?></textarea></p>
+      <?php
+        if(isset($file)) { ?>
+          <p><a href="<?=$file?>" download="<?=basename("$file")?>">
+          <img src="<?= $file ?>"></a>
+          <textarea name="contents" style="width:<?=$width?>px; height:<?=$height?>px;"><?=$row['contents']?></textarea></p>
+        <?php } else {?>
+          <p><textarea name="contents" style="width:400px; height:200px;"><?=$row['contents']?></textarea></p>
+        <?php  } ?>
+
 
       <input type ="hidden" name="board_id" value="<?=$row['board_id']?>">
+      <input type="hidden" name="file"
+      value="<?=$file?>">
       <input type="submit" value="수정">
     </form>
     <form action="delete.php" method="post">
