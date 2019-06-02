@@ -55,7 +55,7 @@
             </tr>
                <?= $list; ?>
           </table>
-          <p><button onclick="history.go(-2)">돌아가기</button></p>
+          <p><button onclick="history.back()">돌아가기</button></p>
         </div>
         </body>
       <?php } ?>
